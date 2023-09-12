@@ -120,3 +120,8 @@ En el siguiente enlace se puede ver el [Modelo Entidad-Relación (ER)](modelo.pn
 ![Modelo ER](modelo.png)
 
 Este diagrama visualiza las tablas y las relaciones entre ellas en la base de datos.
+
+## Código SQL de la Base de Datos
+
+El código SQL que define la estructura de la base de datos se encuentra en el archivo [Codigo.sql](Codigo.sql) en este repositorio. 
+
