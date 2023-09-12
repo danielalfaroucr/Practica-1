@@ -111,3 +111,12 @@ El sistema utiliza las siguientes relaciones entre tablas para organizar y relac
 - **Tabla `productofactura` con `Factura` y `Producto`**:
   - La tabla `productofactura` tiene relaciones de clave foránea con las tablas `Factura` y `Producto`. Esto vincula cada entrada de producto en una factura con la factura correspondiente y el producto comprado.
 
+
+
+## Modelo Entidad-Relación
+
+En el siguiente enlace se puede ver el [Modelo Entidad-Relación (ER)](modelo.png) que representa la estructura de la base de datos utilizada en este sistema de gestión de negocios.
+
+![Modelo ER](modelo.png)
+
+Este diagrama visualiza las tablas y las relaciones entre ellas en la base de datos.
