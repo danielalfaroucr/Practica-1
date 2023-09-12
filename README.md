@@ -125,3 +125,10 @@ Este diagrama visualiza las tablas y las relaciones entre ellas en la base de da
 
 El código SQL que define la estructura de la base de datos se encuentra en el archivo [Codigo.sql](Codigo.sql) en este repositorio. 
 
+## Nota Importante
+
+La estructura y el diseño de esta base de datos fueron creados siguiendo las directrices y restricciones establecidas en el documento de la práctica "Prática Programada 1" que se encuentra en el archivo [Prática Programada 1.pdf](Prática%20Programada%201.pdf) en este repositorio.
+
+Es importante tener en cuenta que esta base de datos se diseñó específicamente para cumplir con los requisitos de dicha práctica, y su uso puede estar limitado a esos contextos. Se recomienda revisar el documento mencionado para obtener más detalles sobre las características y restricciones específicas de la base de datos.
+
+
