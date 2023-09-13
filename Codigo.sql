@@ -1,137 +1,138 @@
-
+--CREACIÃ“N DE LA BASE DE DATOS. Con la sintaxis CREATE DATABASE base, se crea la base de datos negocio.
+	CREATE DATABASE negocio; 
 
 -- LLAMADO A LA BASE DE DATOS: En esta parte, se indica que todas las acciones y consultas que se lleven a cabo se hagan a la base de datos 'negocio'.
 	USE negocio; --Con la linea USE negocio, se establece que todas las consultas que se hagan se apliquen a la base de datos negocio.
 	GO --GO sirve como un separador para indicar que todas las instrucciones SQL anteriores deben ejecutarse como un conjunto antes de pasar a las siguientes.
 
---CREACIÓN DE TABLAS PARA LA BASE DE DATOS: En esta sección, se crean las tablas en las que se almacenarán los datos ingresados. 
---Una tabla en una base de datos SQL es una estructura organizada para almacenar y gestionar datos de manera tabular, con filas y columnas. Cada fila representa un registro y cada columna contiene un atributo o campo de datos específico. 
+--CREACIÃ“N DE TABLAS PARA LA BASE DE DATOS: En esta secciÃ³n, se crean las tablas en las que se almacenarÃ¡n los datos ingresados. 
+--Una tabla en una base de datos SQL es una estructura organizada para almacenar y gestionar datos de manera tabular, con filas y columnas. Cada fila representa un registro y cada columna contiene un atributo o campo de datos especÃ­fico. 
 
-	CREATE TABLE Categoria( --Con CREATE TABLE se inicia la creación de la tabla Categoria. 
-		id_categoria INT NOT NULL CHECK (id_categoria >= 0) CONSTRAINT id_categoria PRIMARY KEY, -- Se crea el atributo id_categoria, se indica que sea de tipo INT (número entero), que no pueda quedar vacío (con instrucción NOT NULL), se indica que debe ser un número mayor o igual a cero (con función CHECK) y se indica la restricción o limitación (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla. Una primary key (llave primaria) es un atributo o conjunto de atributos que identifica de manera única cada registro en una tabla.
-		nombre CHAR(40) NOT NULL --Se crea el atributo nombre, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud máxima de 40 caracteres, se indica que no puede quedar vacío el atributo (NOT NULL).
-	) --Con este paréntesis, se termina la creación de la tabla Categoría. 
+	CREATE TABLE Categoria( --Con CREATE TABLE se inicia la creaciÃ³n de la tabla Categoria. 
+		id_categoria INT NOT NULL CHECK (id_categoria >= 0) CONSTRAINT id_categoria PRIMARY KEY, -- Se crea el atributo id_categoria, se indica que sea de tipo INT (nÃºmero entero), que no pueda quedar vacÃ­o (con instrucciÃ³n NOT NULL), se indica que debe ser un nÃºmero mayor o igual a cero (con funciÃ³n CHECK) y se indica la restricciÃ³n o limitaciÃ³n (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla. Una primary key (llave primaria) es un atributo o conjunto de atributos que identifica de manera Ãºnica cada registro en una tabla.
+		nombre CHAR(40) NOT NULL --Se crea el atributo nombre, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud mÃ¡xima de 40 caracteres, se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+	) --Con este parÃ©ntesis, se termina la creaciÃ³n de la tabla CategorÃ­a. 
 			
-	CREATE TABLE Subcategoria( --Con CREATE TABLE se inicia la creación de la tabla Subcategoria.  
-		id_subcategoria INT NOT NULL CHECK (id_subcategoria >= 0) CONSTRAINT id_subcategoria PRIMARY KEY, -- Se crea el atributo id_subcategoria, se indica que sea de tipo INT (número entero), que no pueda quedar vacío (con instrucción NOT NULL), se indica que debe ser un número mayor o igual a cero (con función CHECK) y se indica la restricción o limitación (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla. Una primary key (llave primaria) es un atributo o conjunto de atributos que identifica de manera única cada registro en una tabla.
-		nombre CHAR(40) NOT NULL, --Se crea el atributo nombre, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud máxima de caracteres de 40 , se indica que no puede quedar vacío el atributo (NOT NULL).
-		id_categoria INT NOT NULL CHECK (id_categoria >= 0), -- Se crea el atributo id_categoria, se indica que sea de tipo INT (número entero), que no pueda quedar vacío (con instrucción NOT NULL), se indica que debe ser un número mayor o igual a cero (con función CHECK).	
-		FOREIGN KEY (id_categoria) REFERENCES Categoria(id_categoria) --Se establece la relación entre la tabla Categoria y Subcategoria. Una "foreign key" (llave foránea) es un campo en una tabla que se relaciona con la clave primaria de otra tabla, estableciendo así una conexión entre ellas. Se indica con función FOREIGN KEY que el atributo id_categoria de esta tabla se relacione con el atributo id_categoria de la tabla Categoria (REFERENCES).
-	)--Con este paréntesis, se termina la creación de la tabla Subcategoría. 
+	CREATE TABLE Subcategoria( --Con CREATE TABLE se inicia la creaciÃ³n de la tabla Subcategoria.  
+		id_subcategoria INT NOT NULL CHECK (id_subcategoria >= 0) CONSTRAINT id_subcategoria PRIMARY KEY, -- Se crea el atributo id_subcategoria, se indica que sea de tipo INT (nÃºmero entero), que no pueda quedar vacÃ­o (con instrucciÃ³n NOT NULL), se indica que debe ser un nÃºmero mayor o igual a cero (con funciÃ³n CHECK) y se indica la restricciÃ³n o limitaciÃ³n (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla. Una primary key (llave primaria) es un atributo o conjunto de atributos que identifica de manera Ãºnica cada registro en una tabla.
+		nombre CHAR(40) NOT NULL, --Se crea el atributo nombre, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud mÃ¡xima de caracteres de 40 , se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		id_categoria INT NOT NULL CHECK (id_categoria >= 0), -- Se crea el atributo id_categoria, se indica que sea de tipo INT (nÃºmero entero), que no pueda quedar vacÃ­o (con instrucciÃ³n NOT NULL), se indica que debe ser un nÃºmero mayor o igual a cero (con funciÃ³n CHECK).	
+		FOREIGN KEY (id_categoria) REFERENCES Categoria(id_categoria) --Se establece la relaciÃ³n entre la tabla Categoria y Subcategoria. Una "foreign key" (llave forÃ¡nea) es un campo en una tabla que se relaciona con la clave primaria de otra tabla, estableciendo asÃ­ una conexiÃ³n entre ellas. Se indica con funciÃ³n FOREIGN KEY que el atributo id_categoria de esta tabla se relacione con el atributo id_categoria de la tabla Categoria (REFERENCES).
+	)--Con este parÃ©ntesis, se termina la creaciÃ³n de la tabla SubcategorÃ­a. 
 
-	CREATE TABLE Provincia( --Con CREATE TABLE se inicia la creación de la tabla Provincia.  
-		id_provincia INT NOT NULL IDENTITY(1,1) CONSTRAINT id_provincia PRIMARY KEY, --Se crea el atributo id_provincia, se indica que sea de tipo entero (INT), que no pueda quedar vacío (NOT NULL), se indica por medio de la función IDENTITY que este atributo se llene automáticamente con cada entrada de datos (cada línea), empezando con 1 (primer uno en el paréntesis junto a la palabra IDENTITY) y que vaya aumentando en uno con cada línea ingresada (segundo uno en el paréntesis junto a la palabra IDENTITY). Se indica la restricción o limitación (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla. 
-		nombre CHAR(40) NOT NULL --Se crea el atributo nombre, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud máxima de 40 caracteres, se indica que no puede quedar vacío el atributo (NOT NULL).
-	)--Con este paréntesis, se termina la creación de la tabla Provincia.
+	CREATE TABLE Provincia( --Con CREATE TABLE se inicia la creaciÃ³n de la tabla Provincia.  
+		id_provincia INT NOT NULL IDENTITY(1,1) CONSTRAINT id_provincia PRIMARY KEY, --Se crea el atributo id_provincia, se indica que sea de tipo entero (INT), que no pueda quedar vacÃ­o (NOT NULL), se indica por medio de la funciÃ³n IDENTITY que este atributo se llene automÃ¡ticamente con cada entrada de datos (cada lÃ­nea), empezando con 1 (primer uno en el parÃ©ntesis junto a la palabra IDENTITY) y que vaya aumentando en uno con cada lÃ­nea ingresada (segundo uno en el parÃ©ntesis junto a la palabra IDENTITY). Se indica la restricciÃ³n o limitaciÃ³n (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla. 
+		nombre CHAR(40) NOT NULL --Se crea el atributo nombre, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud mÃ¡xima de 40 caracteres, se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+	)--Con este parÃ©ntesis, se termina la creaciÃ³n de la tabla Provincia.
 
 
-	CREATE TABLE Canton( --Con CREATE TABLE se inicia la creación de la tabla Canton.  
-		id_canton INT NOT NULL IDENTITY(1,1) CONSTRAINT id_canton PRIMARY KEY, --Se crea el atributo id_canton, se indica que sea de tipo entero (INT), que no pueda quedar vacío (NOT NULL), se indica por medio de la función IDENTITY que este atributo se llene automáticamente con cada entrada de datos (cada línea), empezando con 1 (primer uno en el paréntesis junto a la palabra IDENTITY) y que vaya aumentando en uno con cada línea ingresada (segundo uno en el paréntesis junto a la palabra IDENTITY). Se indica la restricción o limitación (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla. 
-		nombre CHAR(40) NOT NULL, --Se crea el atributo nombre, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud máxima de 40 caracteres, se indica que no puede quedar vacío el atributo (NOT NULL).
-		id_provincia INT NOT NULL, --Se crea el atributo id_provincia, indicando que sea de tipo INT (número entero) y que no pueda quedar vacío (NOT NULL).
-		FOREIGN KEY (id_provincia) REFERENCES Provincia(id_provincia) --Se establece la relación entre la tabla Provincia y Canton. Se indica con función FOREIGN KEY que el atributo id_provincia de esta tabla se relacione con el atributo id_provincia de la tabla Provincia (REFERENCES).
-	)--Con este paréntesis, se termina la creación de la tabla Provincia.
+	CREATE TABLE Canton( --Con CREATE TABLE se inicia la creaciÃ³n de la tabla Canton.  
+		id_canton INT NOT NULL IDENTITY(1,1) CONSTRAINT id_canton PRIMARY KEY, --Se crea el atributo id_canton, se indica que sea de tipo entero (INT), que no pueda quedar vacÃ­o (NOT NULL), se indica por medio de la funciÃ³n IDENTITY que este atributo se llene automÃ¡ticamente con cada entrada de datos (cada lÃ­nea), empezando con 1 (primer uno en el parÃ©ntesis junto a la palabra IDENTITY) y que vaya aumentando en uno con cada lÃ­nea ingresada (segundo uno en el parÃ©ntesis junto a la palabra IDENTITY). Se indica la restricciÃ³n o limitaciÃ³n (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla. 
+		nombre CHAR(40) NOT NULL, --Se crea el atributo nombre, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud mÃ¡xima de 40 caracteres, se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		id_provincia INT NOT NULL, --Se crea el atributo id_provincia, indicando que sea de tipo INT (nÃºmero entero) y que no pueda quedar vacÃ­o (NOT NULL).
+		FOREIGN KEY (id_provincia) REFERENCES Provincia(id_provincia) --Se establece la relaciÃ³n entre la tabla Provincia y Canton. Se indica con funciÃ³n FOREIGN KEY que el atributo id_provincia de esta tabla se relacione con el atributo id_provincia de la tabla Provincia (REFERENCES).
+	)--Con este parÃ©ntesis, se termina la creaciÃ³n de la tabla Provincia.
 	
-	CREATE TABLE Distrito( --Con CREATE TABLE se inicia la creación de la tabla Distrito.
-		id_distrito INT NOT NULL IDENTITY(1,1) CONSTRAINT id_distrito PRIMARY KEY, --Se crea el atributo id_distrito, se indica que sea de tipo entero (INT), que no pueda quedar vacío (NOT NULL), se indica por medio de la función IDENTITY que este atributo se llene automáticamente con cada entrada de datos (cada línea), empezando con 1 (primer uno en el paréntesis junto a la palabra IDENTITY) y que vaya aumentando en uno con cada línea ingresada (segundo uno en el paréntesis junto a la palabra IDENTITY). Se indica la restricción o limitación (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla. 
-		nombre CHAR(40) NOT NULL, --Se crea el atributo nombre, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud máxima de 40 caracteres, se indica que no puede quedar vacío el atributo (NOT NULL).
-		id_canton INT NOT NULL, --Se crea el atributo id_canton, indicando que sea de tipo INT (número entero) y que no pueda quedar vacío (NOT NULL).
-		FOREIGN KEY (id_canton) REFERENCES Canton(id_canton) --Se establece la relación entre la tabla Canton y Distrito. Se indica con función FOREIGN KEY que el atributo id_canton de esta tabla se relacione con el atributo id_canton de la tabla Canton (REFERENCES).
-	)--Con este paréntesis, se termina la creación de la tabla Distrito.
+	CREATE TABLE Distrito( --Con CREATE TABLE se inicia la creaciÃ³n de la tabla Distrito.
+		id_distrito INT NOT NULL IDENTITY(1,1) CONSTRAINT id_distrito PRIMARY KEY, --Se crea el atributo id_distrito, se indica que sea de tipo entero (INT), que no pueda quedar vacÃ­o (NOT NULL), se indica por medio de la funciÃ³n IDENTITY que este atributo se llene automÃ¡ticamente con cada entrada de datos (cada lÃ­nea), empezando con 1 (primer uno en el parÃ©ntesis junto a la palabra IDENTITY) y que vaya aumentando en uno con cada lÃ­nea ingresada (segundo uno en el parÃ©ntesis junto a la palabra IDENTITY). Se indica la restricciÃ³n o limitaciÃ³n (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla. 
+		nombre CHAR(40) NOT NULL, --Se crea el atributo nombre, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud mÃ¡xima de 40 caracteres, se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		id_canton INT NOT NULL, --Se crea el atributo id_canton, indicando que sea de tipo INT (nÃºmero entero) y que no pueda quedar vacÃ­o (NOT NULL).
+		FOREIGN KEY (id_canton) REFERENCES Canton(id_canton) --Se establece la relaciÃ³n entre la tabla Canton y Distrito. Se indica con funciÃ³n FOREIGN KEY que el atributo id_canton de esta tabla se relacione con el atributo id_canton de la tabla Canton (REFERENCES).
+	)--Con este parÃ©ntesis, se termina la creaciÃ³n de la tabla Distrito.
 	
 
-	CREATE TABLE Proveedor(  --Con CREATE TABLE se inicia la creación de la tabla Proveedor.
-		cedula INT NOT NULL   CHECK (cedula >= 0) CONSTRAINT id_proveedor PRIMARY KEY, -- Se crea el atributo cedula, se indica que sea de tipo INT (número entero), que no pueda quedar vacío (con instrucción NOT NULL), se indica que debe ser un número mayor o igual a cero (con función CHECK) y se indica la restricción o limitación (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla.-- Se crea el atributo id_subcategoria, se indica que sea de tipo INT (número entero), que no pueda quedar vacío (con instrucción NOT NULL), se indica que debe ser un número mayor o igual a cero (con función CHECK) y se indica la restricción o limitación (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla.		
-		nombre CHAR(40) NOT NULL, --Se crea el atributo nombre, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud máxima de 40 caracteres, se indica que no puede quedar vacío el atributo (NOT NULL).
-		correo CHAR(40) NOT NULL, --Se crea el atributo correo, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud máxima de 40 caracteres, se indica que no puede quedar vacío el atributo (NOT NULL).
-		telefono INT NOT NULL, --Se crea el atributo telefono, indicando que sea de tipo INT (número entero), se indica que no puede quedar vacío el atributo (NOT NULL).
-		id_distrito INT NOT NULL, --Se crea el atributo id_distrito, indicando que sea de tipo INT (número entero), se indica que no puede quedar vacío el atributo (NOT NULL).
-		TipoCedula CHAR(10) NOT NULL, --Se crea el atributo TipoCedula, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud máxima de 40 caracteres, se indica que no puede quedar vacío el atributo (NOT NULL).
-		FOREIGN KEY (id_distrito) REFERENCES Distrito(id_distrito), --Se establece la relación entre la tabla Distrito y Proveedor. Se indica con función FOREIGN KEY que el atributo id_distrito de esta tabla se relacione con el atributo id_distrito de la tabla Distrito (REFERENCES).
-	)--Con este paréntesis, se termina la creación de la tabla Proveedor.
+	CREATE TABLE Proveedor(  --Con CREATE TABLE se inicia la creaciÃ³n de la tabla Proveedor.
+		cedula INT NOT NULL   CHECK (cedula >= 0) CONSTRAINT id_proveedor PRIMARY KEY, -- Se crea el atributo cedula, se indica que sea de tipo INT (nÃºmero entero), que no pueda quedar vacÃ­o (con instrucciÃ³n NOT NULL), se indica que debe ser un nÃºmero mayor o igual a cero (con funciÃ³n CHECK) y se indica la restricciÃ³n o limitaciÃ³n (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla.-- Se crea el atributo id_subcategoria, se indica que sea de tipo INT (nÃºmero entero), que no pueda quedar vacÃ­o (con instrucciÃ³n NOT NULL), se indica que debe ser un nÃºmero mayor o igual a cero (con funciÃ³n CHECK) y se indica la restricciÃ³n o limitaciÃ³n (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla.		
+		nombre CHAR(40) NOT NULL, --Se crea el atributo nombre, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud mÃ¡xima de 40 caracteres, se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		correo CHAR(40) NOT NULL, --Se crea el atributo correo, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud mÃ¡xima de 40 caracteres, se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		telefono INT NOT NULL, --Se crea el atributo telefono, indicando que sea de tipo INT (nÃºmero entero), se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		id_distrito INT NOT NULL, --Se crea el atributo id_distrito, indicando que sea de tipo INT (nÃºmero entero), se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		TipoCedula CHAR(10) NOT NULL, --Se crea el atributo TipoCedula, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud mÃ¡xima de 40 caracteres, se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		FOREIGN KEY (id_distrito) REFERENCES Distrito(id_distrito), --Se establece la relaciÃ³n entre la tabla Distrito y Proveedor. Se indica con funciÃ³n FOREIGN KEY que el atributo id_distrito de esta tabla se relacione con el atributo id_distrito de la tabla Distrito (REFERENCES).
+	)--Con este parÃ©ntesis, se termina la creaciÃ³n de la tabla Proveedor.
 
-	CREATE TABLE Producto( --Con CREATE TABLE se inicia la creación de la tabla Producto.
-		consecutivo INT NOT NULL IDENTITY(1,1) CONSTRAINT consecutivo PRIMARY KEY, --Se crea el atributo consecutivo, se indica que sea de tipo entero (INT), que no pueda quedar vacío (NOT NULL), se indica por medio de la función IDENTITY que este atributo se llene automáticamente con cada entrada de datos (cada línea), empezando con 1 (primer uno en el paréntesis junto a la palabra IDENTITY) y que vaya aumentando en uno con cada línea ingresada (segundo uno en el paréntesis junto a la palabra IDENTITY). Se indica la restricción o limitación (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla. 
-		id_universal INT NOT NULL CHECK (id_universal >= 0),   -- Se crea el atributo id_universal, se indica que sea de tipo INT (número entero), que no pueda quedar vacío (con instrucción NOT NULL), se indica que debe ser un número mayor o igual a cero (con función CHECK).
-		nombre CHAR(40) NOT NULL ,  --Se crea el atributo nombre, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud máxima de 40 caracteres, se indica que no puede quedar vacío el atributo (NOT NULL).
-		precio DECIMAL(9,2) NOT NULL CHECK (precio >= 0), --Se crea el atributo precio, indicando que sea de tipo DECIMAL (número decimal) con un máximo de 9 dígitos en la parte entera y 2 en la parte decimal (paréntesis junto a DECIMAL), se indica que no puede quedar vacío (NOT NULL) y con la función CHECK se verifica que el número sea mayor a cero.
-		id_subcat INT NOT NULL, --Se crea el atributo id_subcat, indicando que sea de tipo INT (número entero), se indica que no puede quedar vacío el atributo (NOT NULL).
-		tamano INT  CHECK (tamano >= 0), --Se crea el atributo tamano, indicando que sea de tipo INT (número entero), no se indica que no puede quedar vacío el atributo (se omite NOT NULL) y por medio de CHECK se verifica que el numero sea mayor a cero.
-		color CHAR(40) NOT NULL,  --Se crea el atributo color, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud máxima de 40 caracteres, se indica que no puede quedar vacío el atributo (NOT NULL).
-		cedula INT NOT NULL, --Se crea el atributo cedula, indicando que sea de tipo INT (número entero), se indica que no puede quedar vacío el atributo (NOT NULL).
-		FOREIGN KEY (cedula) REFERENCES Proveedor(cedula), --Se establece la relación entre la tabla Proveedor y Producto. Se indica con función FOREIGN KEY que el atributo cedula de esta tabla se relacione con el atributo cedula de la tabla Proveedor (REFERENCES).
-		FOREIGN KEY (id_subcat) REFERENCES Subcategoria (id_subcategoria) --Se establece la relación entre la tabla Subcategoria y Producto. Se indica con función FOREIGN KEY que el atributo id_subcat de esta tabla se relacione con el atributo id_subcategoria de la tabla Subcategoria (REFERENCES).
-	)--Con este paréntesis, se termina la creación de la tabla Producto.
+	CREATE TABLE Producto( --Con CREATE TABLE se inicia la creaciÃ³n de la tabla Producto.
+		consecutivo INT NOT NULL IDENTITY(1,1) CONSTRAINT consecutivo PRIMARY KEY, --Se crea el atributo consecutivo, se indica que sea de tipo entero (INT), que no pueda quedar vacÃ­o (NOT NULL), se indica por medio de la funciÃ³n IDENTITY que este atributo se llene automÃ¡ticamente con cada entrada de datos (cada lÃ­nea), empezando con 1 (primer uno en el parÃ©ntesis junto a la palabra IDENTITY) y que vaya aumentando en uno con cada lÃ­nea ingresada (segundo uno en el parÃ©ntesis junto a la palabra IDENTITY). Se indica la restricciÃ³n o limitaciÃ³n (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla. 
+		id_universal INT NOT NULL CHECK (id_universal >= 0),   -- Se crea el atributo id_universal, se indica que sea de tipo INT (nÃºmero entero), que no pueda quedar vacÃ­o (con instrucciÃ³n NOT NULL), se indica que debe ser un nÃºmero mayor o igual a cero (con funciÃ³n CHECK).
+		nombre CHAR(40) NOT NULL ,  --Se crea el atributo nombre, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud mÃ¡xima de 40 caracteres, se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		precio DECIMAL(9,2) NOT NULL CHECK (precio >= 0), --Se crea el atributo precio, indicando que sea de tipo DECIMAL (nÃºmero decimal) con un mÃ¡ximo de 9 dÃ­gitos en la parte entera y 2 en la parte decimal (parÃ©ntesis junto a DECIMAL), se indica que no puede quedar vacÃ­o (NOT NULL) y con la funciÃ³n CHECK se verifica que el nÃºmero sea mayor a cero.
+		id_subcat INT NOT NULL, --Se crea el atributo id_subcat, indicando que sea de tipo INT (nÃºmero entero), se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		tamano INT  CHECK (tamano >= 0), --Se crea el atributo tamano, indicando que sea de tipo INT (nÃºmero entero), no se indica que no puede quedar vacÃ­o el atributo (se omite NOT NULL) y por medio de CHECK se verifica que el numero sea mayor a cero.
+		color CHAR(40) NOT NULL,  --Se crea el atributo color, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud mÃ¡xima de 40 caracteres, se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		cedula INT NOT NULL, --Se crea el atributo cedula, indicando que sea de tipo INT (nÃºmero entero), se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		FOREIGN KEY (cedula) REFERENCES Proveedor(cedula), --Se establece la relaciÃ³n entre la tabla Proveedor y Producto. Se indica con funciÃ³n FOREIGN KEY que el atributo cedula de esta tabla se relacione con el atributo cedula de la tabla Proveedor (REFERENCES).
+		FOREIGN KEY (id_subcat) REFERENCES Subcategoria (id_subcategoria) --Se establece la relaciÃ³n entre la tabla Subcategoria y Producto. Se indica con funciÃ³n FOREIGN KEY que el atributo id_subcat de esta tabla se relacione con el atributo id_subcategoria de la tabla Subcategoria (REFERENCES).
+	)--Con este parÃ©ntesis, se termina la creaciÃ³n de la tabla Producto.
 
-	CREATE TABLE Cliente(--Con CREATE TABLE se inicia la creación de la tabla Cliente.
-		cedula INT NOT NULL CHECK (cedula >=0) CONSTRAINT cedula PRIMARY KEY, -- Se crea el atributo cedula, se indica que sea de tipo INT (número entero), que no pueda quedar vacío (con instrucción NOT NULL), se indica que debe ser un número mayor o igual a cero (con función CHECK) y se indica la restricción o limitación (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla.-- Se crea el atributo id_subcategoria, se indica que sea de tipo INT (número entero), que no pueda quedar vacío (con instrucción NOT NULL), se indica que debe ser un número mayor o igual a cero (con función CHECK) y se indica la restricción o limitación (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla.	
-		nombre CHAR(40) NOT NULL,   --Se crea el atributo nombre, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud máxima de 40 caracteres, se indica que no puede quedar vacío el atributo (NOT NULL).
-		direccion CHAR(40) NOT NULL,  --Se crea el atributo direccion, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud máxima de 40 caracteres, se indica que no puede quedar vacío el atributo (NOT NULL).
-		correo CHAR(40) NOT NULL,  --Se crea el atributo correo, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud máxima de 40 caracteres, se indica que no puede quedar vacío el atributo (NOT NULL).
-		TipoCedula CHAR(10) NOT NULL, --Se crea el atributo TipoCedula, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud máxima de 40 caracteres, se indica que no puede quedar vacío el atributo (NOT NULL).
-		id_distrito INT NOT NULL, --Se crea el atributo id_distrito, indicando que sea de tipo INT (número entero), se indica que no puede quedar vacío el atributo (NOT NULL).
-		FOREIGN KEY (id_distrito) REFERENCES Distrito(id_distrito), --Se establece la relación entre la tabla Distrito y Cliente. Se indica con función FOREIGN KEY que el atributo id_distrito de esta tabla se relacione con el atributo id_distrito de la tabla Distrito (REFERENCES).
-	)--Con este paréntesis, se termina la creación de la tabla Cliente.
+	CREATE TABLE Cliente(--Con CREATE TABLE se inicia la creaciÃ³n de la tabla Cliente.
+		cedula INT NOT NULL CHECK (cedula >=0) CONSTRAINT cedula PRIMARY KEY, -- Se crea el atributo cedula, se indica que sea de tipo INT (nÃºmero entero), que no pueda quedar vacÃ­o (con instrucciÃ³n NOT NULL), se indica que debe ser un nÃºmero mayor o igual a cero (con funciÃ³n CHECK) y se indica la restricciÃ³n o limitaciÃ³n (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla.-- Se crea el atributo id_subcategoria, se indica que sea de tipo INT (nÃºmero entero), que no pueda quedar vacÃ­o (con instrucciÃ³n NOT NULL), se indica que debe ser un nÃºmero mayor o igual a cero (con funciÃ³n CHECK) y se indica la restricciÃ³n o limitaciÃ³n (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla.	
+		nombre CHAR(40) NOT NULL,   --Se crea el atributo nombre, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud mÃ¡xima de 40 caracteres, se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		direccion CHAR(40) NOT NULL,  --Se crea el atributo direccion, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud mÃ¡xima de 40 caracteres, se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		correo CHAR(40) NOT NULL,  --Se crea el atributo correo, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud mÃ¡xima de 40 caracteres, se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		TipoCedula CHAR(10) NOT NULL, --Se crea el atributo TipoCedula, indicando que sea de tipo CHAR (datos de tipo caracter) con una longitud mÃ¡xima de 40 caracteres, se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		id_distrito INT NOT NULL, --Se crea el atributo id_distrito, indicando que sea de tipo INT (nÃºmero entero), se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		FOREIGN KEY (id_distrito) REFERENCES Distrito(id_distrito), --Se establece la relaciÃ³n entre la tabla Distrito y Cliente. Se indica con funciÃ³n FOREIGN KEY que el atributo id_distrito de esta tabla se relacione con el atributo id_distrito de la tabla Distrito (REFERENCES).
+	)--Con este parÃ©ntesis, se termina la creaciÃ³n de la tabla Cliente.
 	
-	CREATE TABLE Factura( --Con CREATE TABLE se inicia la creación de la tabla Factura.
-		id_factura INT NOT NULL IDENTITY(1,1) CONSTRAINT id_factura PRIMARY KEY, --Se crea el atributo id_factura, se indica que sea de tipo entero (INT), que no pueda quedar vacío (NOT NULL), se indica por medio de la función IDENTITY que este atributo se llene automáticamente con cada entrada de datos (cada línea), empezando con 1 (primer uno en el paréntesis junto a la palabra IDENTITY) y que vaya aumentando en uno con cada línea ingresada (segundo uno en el paréntesis junto a la palabra IDENTITY). Se indica la restricción o limitación (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla. 
-		cedula INT NOT NULL,  --Se crea el atributo cedula, indicando que sea de tipo INT (número entero), se indica que no puede quedar vacío el atributo (NOT NULL).
-		fecha DATE NOT NULL, --Se crea el atributo fecha, indicando que sea de tipo DATE (fecha), se indica que no puede quedar vacío el atributo (NOT NULL).
-		FOREIGN KEY (cedula) REFERENCES Cliente(cedula)--Se establece la relación entre la tabla Cliente y Factura. Se indica con función FOREIGN KEY que el atributo cedula de esta tabla se relacione con el atributo cedula de la tabla Cliente (REFERENCES).
-	)--Con este paréntesis, se termina la creación de la tabla Cliente.
+	CREATE TABLE Factura( --Con CREATE TABLE se inicia la creaciÃ³n de la tabla Factura.
+		id_factura INT NOT NULL IDENTITY(1,1) CONSTRAINT id_factura PRIMARY KEY, --Se crea el atributo id_factura, se indica que sea de tipo entero (INT), que no pueda quedar vacÃ­o (NOT NULL), se indica por medio de la funciÃ³n IDENTITY que este atributo se llene automÃ¡ticamente con cada entrada de datos (cada lÃ­nea), empezando con 1 (primer uno en el parÃ©ntesis junto a la palabra IDENTITY) y que vaya aumentando en uno con cada lÃ­nea ingresada (segundo uno en el parÃ©ntesis junto a la palabra IDENTITY). Se indica la restricciÃ³n o limitaciÃ³n (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla. 
+		cedula INT NOT NULL,  --Se crea el atributo cedula, indicando que sea de tipo INT (nÃºmero entero), se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		fecha DATE NOT NULL, --Se crea el atributo fecha, indicando que sea de tipo DATE (fecha), se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		FOREIGN KEY (cedula) REFERENCES Cliente(cedula)--Se establece la relaciÃ³n entre la tabla Cliente y Factura. Se indica con funciÃ³n FOREIGN KEY que el atributo cedula de esta tabla se relacione con el atributo cedula de la tabla Cliente (REFERENCES).
+	)--Con este parÃ©ntesis, se termina la creaciÃ³n de la tabla Cliente.
 	
-	CREATE TABLE productofactura(--Con CREATE TABLE se inicia la creación de la tabla productofactura.
-		id_prodfac INT NOT NULL IDENTITY(1,1) CONSTRAINT id_prodfac PRIMARY KEY, --Se crea el atributo id_prodfac, se indica que sea de tipo entero (INT), que no pueda quedar vacío (NOT NULL), se indica por medio de la función IDENTITY que este atributo se llene automáticamente con cada entrada de datos (cada línea), empezando con 1 (primer uno en el paréntesis junto a la palabra IDENTITY) y que vaya aumentando en uno con cada línea ingresada (segundo uno en el paréntesis junto a la palabra IDENTITY). Se indica la restricción o limitación (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla.
-		id_factura INT NOT NULL,  --Se crea el atributo id_factura, indicando que sea de tipo INT (número entero), se indica que no puede quedar vacío el atributo (NOT NULL).
-		consecutivo INT NOT NULL, --Se crea el atributo consecutivo, indicando que sea de tipo INT (número entero), se indica que no puede quedar vacío el atributo (NOT NULL).
-		cantidad INT NOT NULL CHECK (cantidad >0),  --Se crea el atributo cantidad, indicando que sea de tipo INT (número entero), se indica que no puede quedar vacío el atributo (NOT NULL). Por medio de CHECK se verifica que este número sea mayor a cero. 
-		porcimpuesto INT NOT NULL CHECK (porcimpuesto >=0 AND porcimpuesto <= 100) , --Se crea el atributo porcimpuesto, indicando que sea de tipo INT (número entero), se indica que no puede quedar vacío el atributo (NOT NULL). Por medio de CHECK se verifica que este número sea mayor o igual a cero y menor o igual a cien.
-		porcdescuento INT NOT NULL CHECK (porcdescuento >=0 AND porcdescuento <= 100) --Se crea el atributo porcdescuento, indicando que sea de tipo INT (número entero), se indica que no puede quedar vacío el atributo (NOT NULL). Por medio de CHECK se verifica que este número sea mayor o igual a cero y menor o igual a cien. 
-		FOREIGN KEY (id_factura) REFERENCES Factura(id_factura), --Se establece la relación entre la tabla Factura y productofactura. Se indica con función FOREIGN KEY que el atributo id_factura de esta tabla se relacione con el atributo id_factura de la tabla Factura (REFERENCES).
-		FOREIGN KEY (consecutivo) REFERENCES Producto(consecutivo) --Se establece la relación entre la tabla Producto y productofactura. Se indica con función FOREIGN KEY que el atributo consecutivo de esta tabla se relacione con el atributo consecutivo de la tabla Producto (REFERENCES).
-	)--Con este paréntesis, se termina la creación de la tabla productofactura.
+	CREATE TABLE productofactura(--Con CREATE TABLE se inicia la creaciÃ³n de la tabla productofactura.
+		id_prodfac INT NOT NULL IDENTITY(1,1) CONSTRAINT id_prodfac PRIMARY KEY, --Se crea el atributo id_prodfac, se indica que sea de tipo entero (INT), que no pueda quedar vacÃ­o (NOT NULL), se indica por medio de la funciÃ³n IDENTITY que este atributo se llene automÃ¡ticamente con cada entrada de datos (cada lÃ­nea), empezando con 1 (primer uno en el parÃ©ntesis junto a la palabra IDENTITY) y que vaya aumentando en uno con cada lÃ­nea ingresada (segundo uno en el parÃ©ntesis junto a la palabra IDENTITY). Se indica la restricciÃ³n o limitaciÃ³n (Constraint) para indicar que este atributo es la llave primaria (PRIMARY KEY) de la tabla.
+		id_factura INT NOT NULL,  --Se crea el atributo id_factura, indicando que sea de tipo INT (nÃºmero entero), se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		consecutivo INT NOT NULL, --Se crea el atributo consecutivo, indicando que sea de tipo INT (nÃºmero entero), se indica que no puede quedar vacÃ­o el atributo (NOT NULL).
+		cantidad INT NOT NULL CHECK (cantidad >0),  --Se crea el atributo cantidad, indicando que sea de tipo INT (nÃºmero entero), se indica que no puede quedar vacÃ­o el atributo (NOT NULL). Por medio de CHECK se verifica que este nÃºmero sea mayor a cero. 
+		porcimpuesto INT NOT NULL CHECK (porcimpuesto >=0 AND porcimpuesto <= 100) , --Se crea el atributo porcimpuesto, indicando que sea de tipo INT (nÃºmero entero), se indica que no puede quedar vacÃ­o el atributo (NOT NULL). Por medio de CHECK se verifica que este nÃºmero sea mayor o igual a cero y menor o igual a cien.
+		porcdescuento INT NOT NULL CHECK (porcdescuento >=0 AND porcdescuento <= 100) --Se crea el atributo porcdescuento, indicando que sea de tipo INT (nÃºmero entero), se indica que no puede quedar vacÃ­o el atributo (NOT NULL). Por medio de CHECK se verifica que este nÃºmero sea mayor o igual a cero y menor o igual a cien. 
+		FOREIGN KEY (id_factura) REFERENCES Factura(id_factura), --Se establece la relaciÃ³n entre la tabla Factura y productofactura. Se indica con funciÃ³n FOREIGN KEY que el atributo id_factura de esta tabla se relacione con el atributo id_factura de la tabla Factura (REFERENCES).
+		FOREIGN KEY (consecutivo) REFERENCES Producto(consecutivo) --Se establece la relaciÃ³n entre la tabla Producto y productofactura. Se indica con funciÃ³n FOREIGN KEY que el atributo consecutivo de esta tabla se relacione con el atributo consecutivo de la tabla Producto (REFERENCES).
+	)--Con este parÃ©ntesis, se termina la creaciÃ³n de la tabla productofactura.
 
---HASTA AQUÍ LA CREACIÓN DE LAS TABLAS DE LA BASE DE DATOS.
+--HASTA AQUÃ LA CREACIÃ“N DE LAS TABLAS DE LA BASE DE DATOS.
 
--- LLENADO DE DATOS: En esta sección se llenarán las tablas previamente creadas con datos de prueba.
+-- LLENADO DE DATOS: En esta secciÃ³n se llenarÃ¡n las tablas previamente creadas con datos de prueba.
 --El llenado de datos tiene una sintaxis de la siguiente manera:  INSERT INTO nombredetabla (atributo 1, atributo 2,...,atributo n) VALUES (atributo 1 del registro j , atributo 2 del primer registro j, ... , atributo n del primer registro j)
---El llenado de datos se hace cumpliendo las restricciones de las llaves primarias y secundarias, así como las relaciones que estas conllevan entre tablas.
+--El llenado de datos se hace cumpliendo las restricciones de las llaves primarias y secundarias, asÃ­ como las relaciones que estas conllevan entre tablas.
 
---Llenado de tabla Categoría	
-	INSERT INTO Categoria (id_categoria, nombre) VALUES (1, 'Electrónica'); --Notar que para datos numéricos (INT O DECIMAL) no hace falta usar comillas. Se usan comillas para datos de tipo CHAR.
+--Llenado de tabla CategorÃ­a	
+	INSERT INTO Categoria (id_categoria, nombre) VALUES (1, 'ElectrÃ³nica'); --Notar que para datos numÃ©ricos (INT O DECIMAL) no hace falta usar comillas. Se usan comillas para datos de tipo CHAR.
 	INSERT INTO Categoria (id_categoria, nombre) VALUES (2, 'Ropa');
 	INSERT INTO Categoria (id_categoria, nombre) VALUES (3, 'Muebles');
 	INSERT INTO Categoria (id_categoria, nombre) VALUES (4, 'Alimentos');
 	INSERT INTO Categoria (id_categoria, nombre) VALUES (5, 'Juguetes');
 
 --Llenado de tabla Subcategoria		
-	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (1, 'Teléfonos móviles', 1);
+	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (1, 'TelÃ©fonos mÃ³viles', 1);
 	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (2, 'Computadoras', 1);
 	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (3, 'Televisores', 1);
-	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (4, 'Cámaras', 1);
-	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (5, 'Accesorios electrónicos', 1);
+	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (4, 'CÃ¡maras', 1);
+	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (5, 'Accesorios electrÃ³nicos', 1);
 	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (6, 'Camisetas', 2);
 	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (7, 'Pantalones', 2);
 	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES(8, 'Vestidos', 2);
 	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (9, 'Calzado', 2);
 	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (10, 'Ropa interior', 2);
-	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (11, 'Sofás', 3);
+	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (11, 'SofÃ¡s', 3);
 	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (12, 'Mesas', 3);
 	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (13, 'Sillas', 3);
 	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (14, 'Armarios', 3);
 	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (15, 'Camas', 3);
 	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (16, 'Frutas', 4);
 	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (17, 'Verduras', 4);
-	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (18, 'Productos lácteos', 4);
+	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (18, 'Productos lÃ¡cteos', 4);
 	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (19, 'Carnes', 4);
 	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (20, 'Panes', 4);
-	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (21, 'Muñecos', 5);
+	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (21, 'MuÃ±ecos', 5);
 	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (22, 'Juegos de mesa', 5);
 	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (23, 'Pelotas', 5);
 	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (24, 'Rompecabezas', 5);
 	INSERT INTO Subcategoria (id_subcategoria, nombre, id_categoria) VALUES (25, 'Juguetes educativos', 5);
 
---Llenado de tabla Provincia: notar que no se especifica el valor de id_provincia para ningún registro, pues se estableció en la creación de la tabla que el campo se llene con la función IDENTITY.
+--Llenado de tabla Provincia: notar que no se especifica el valor de id_provincia para ningÃºn registro, pues se estableciÃ³ en la creaciÃ³n de la tabla que el campo se llene con la funciÃ³n IDENTITY.
 	INSERT INTO Provincia (nombre) VALUES ('San Jose');
 	INSERT INTO Provincia (nombre) VALUES ('Alajuela');
 	INSERT INTO Provincia (nombre) VALUES ('Cartago');
@@ -142,35 +143,35 @@
 
 
 
---Llenado de la tabla Canton: a diferencia de las tablas anteriores, en esta no se escribe la instrucción INSERT INTO en todos los registros. Se escribe la instrucción una sola vez y los siguientes registros se escriben separados por una coma. Al igual que la tabla anterior (Provincia), no se especifica el valor del atributo id_canton, por haber hecho uso de la función IDENTITY en la creación de la tabla.
+--Llenado de la tabla Canton: a diferencia de las tablas anteriores, en esta no se escribe la instrucciÃ³n INSERT INTO en todos los registros. Se escribe la instrucciÃ³n una sola vez y los siguientes registros se escriben separados por una coma. Al igual que la tabla anterior (Provincia), no se especifica el valor del atributo id_canton, por haber hecho uso de la funciÃ³n IDENTITY en la creaciÃ³n de la tabla.
 	INSERT INTO Canton (nombre, id_provincia) VALUES
-		('San José', 1),
-		('Escazú', 1),
+		('San JosÃ©', 1),
+		('EscazÃº', 1),
 		('Desamparados', 1),
 		('Puriscal', 1),
-		('Tarrazú', 1),
-		('Aserrí', 1),
+		('TarrazÃº', 1),
+		('AserrÃ­', 1),
 		('Mora', 1),
 		('Goicoechea', 1),
 		('Santa Ana', 1),
 		('Alajuelita', 1),
-		('Vásquez de Coronado', 1),
+		('VÃ¡squez de Coronado', 1),
 		('Acosta', 1),
-		('Tibás', 1),
+		('TibÃ¡s', 1),
 		('Moravia', 1),
 		('Montes de Oca', 1),
 		('Turrubares', 1),
 		('Dota', 1),
 		('Curridabat', 1),
-		('Pérez Zeledón', 1),
+		('PÃ©rez ZeledÃ³n', 1),
 		('Alajuela', 2),
-		('San Ramón', 2),
+		('San RamÃ³n', 2),
 		('Grecia', 2),
 		('San Mateo', 2),
 		('Atenas', 2),
 		('Naranjo', 2),
 		('Palmares', 2),
-		('Poás', 2),
+		('PoÃ¡s', 2),
 		('Orotina', 2),
 		('San Carlos', 2),
 		('Zarcero', 2),
@@ -179,9 +180,9 @@
 		('Los Chiles', 2),
 		('Guatuso', 2),
 		('Cartago', 3),
-		('Paraíso', 3),
-		('La Unión', 3),
-		('Jiménez', 3),
+		('ParaÃ­so', 3),
+		('La UniÃ³n', 3),
+		('JimÃ©nez', 3),
 		('Turrialba', 3),
 		('Alvarado', 3),
 		('Oreamuno', 3),
@@ -189,19 +190,19 @@
 		('Heredia', 4),
 		('Barva', 4),
 		('Santo Domingo', 4),
-		('Santa Bárbara', 4),
+		('Santa BÃ¡rbara', 4),
 		('San Rafael', 4),
 		('San Isidro', 4),
-		('Belén', 4),
+		('BelÃ©n', 4),
 		('Flores', 4),
 		('Liberia', 5),
 		('Nicoya', 5),
 		('Santa Cruz', 5),
 		('Bagaces', 5),
 		('Carrillo', 5),
-		('Cañas', 5),
+		('CaÃ±as', 5),
 		('Abangares', 5),
-		('Tilarán', 5),
+		('TilarÃ¡n', 5),
 		('Nandayure', 5),
 		('La Cruz', 5),
 		('Hojancha', 5),
@@ -216,30 +217,30 @@
 		('Parrita', 6),
 		('Corredores', 6),
 		('Garabito', 6),
-		('Limón', 7),
-		('Pococí', 7),
+		('LimÃ³n', 7),
+		('PococÃ­', 7),
 		('Siquirres', 7),
 		('Talamanca', 7),
 		('Matina', 7),
-		('Guácimo', 7);
+		('GuÃ¡cimo', 7);
 
 
 --Llenado de la tabla Distrito.
 	INSERT INTO Distrito (nombre, id_canton) VALUES
 		('Carmen', 1), 
 		('Merced', 1),
-		('Escazú Centro', 2),
+		('EscazÃº Centro', 2),
 		('San Antonio', 2),
 		('San Juan', 3),
-		('Patarrá', 3),
+		('PatarrÃ¡', 3),
 		('Puriscal', 4),
 		('Candelarita', 4),
 		('San Marcos', 5),
 		('San Lorenzo', 5),
-		('Aserrí', 6),
+		('AserrÃ­', 6),
 		('Tarbaca', 6),
 		('Mora', 7),
-		('Colón', 7),
+		('ColÃ³n', 7),
 		('Guadalupe', 8),
 		('San Francisco', 8),
 		('Santa Ana', 9),
@@ -253,27 +254,27 @@
 		('San Juan', 13),
 		('Cinco Esquinas', 13),
 		('San Vicente', 14),
-		('San Jerónimo', 14),
+		('San JerÃ³nimo', 14),
 		('San Pedro', 15),
 		('Sabanilla', 15),
 		('San Pablo', 16),
 		('San Pedro', 16),
-		('Santa María', 17),
-		('Jardín', 17),
+		('Santa MarÃ­a', 17),
+		('JardÃ­n', 17),
 		('Curridabat', 18),
 		('Granadilla', 18),
 		('San Isidro de El General', 19),
 		('Daniel Flores', 19),
 		('Alajuela', 20),
-		('San José', 20),
-		('San Ramón', 21),
+		('San JosÃ©', 20),
+		('San RamÃ³n', 21),
 		('Santiago', 21),
 		('Grecia', 22),
 		('San Isidro', 22),
 		('San Mateo', 23),
 		('Labrador', 23),
 		('Atenas', 24),
-		('Jesús', 24),
+		('JesÃºs', 24),
 		('Naranjo', 25),
 		('San Miguel', 25),
 		('Palmares', 26),
@@ -286,8 +287,8 @@
 		('Florencia', 29),
 		('Zarcero', 30),
 		('Laguna', 30),
-		('Sarchí Norte', 31),
-		('Sarchí Sur', 31),
+		('SarchÃ­ Norte', 31),
+		('SarchÃ­ Sur', 31),
 		('Upala', 32),
 		('Aguas Claras', 32),
 		('Los Chiles', 33),
@@ -296,11 +297,11 @@
 		('Buenavista', 34),
 		('Oriental', 35),
 		('Occidental', 35),
-		('Paraíso', 36),
+		('ParaÃ­so', 36),
 		('Santiago', 36),
-		('Tres Ríos', 37),
+		('Tres RÃ­os', 37),
 		('San Diego', 37),
-		('Juan Viñas', 38),
+		('Juan ViÃ±as', 38),
 		('Tucurrique', 38),
 		('Turrialba', 39),
 		('La Suiza', 39),
@@ -316,31 +317,31 @@
 		('San Pablo', 44),
 		('Santo Domingo', 45),
 		('San Vicente', 45),
-		('Santa Bárbara', 46),
+		('Santa BÃ¡rbara', 46),
 		('San Pedro', 46),
 		('San Rafael', 47),
 		('San Josecito', 47),
 		('San Isidro', 48),
-		('San José', 48),
+		('San JosÃ©', 48),
 		('San Antonio', 49),
 		('La Ribera', 49),
-		('San Joaquín', 50),
+		('San JoaquÃ­n', 50),
 		('Barrantes', 50),
 		('Liberia', 51),
-		('Cañas Dulces', 51),
+		('CaÃ±as Dulces', 51),
 		('Nicoya', 52),
-		('Mansión', 52),
+		('MansiÃ³n', 52),
 		('Santa Cruz', 53),
-		('Bolsón', 53),
+		('BolsÃ³n', 53),
 		('Bagaces', 54),
 		('La Fortuna', 54),
 		('Filadelfia', 55),
 		('Palmira', 55),
-		('Cañas', 56),
+		('CaÃ±as', 56),
 		('Palmira', 56),
 		('Las Juntas', 57),
 		('Sierra', 57),
-		('Tilarán', 58),
+		('TilarÃ¡n', 58),
 		('Quebrada Grande', 58),
 		('Nandayure', 59),
 		('San Pablo', 59),
@@ -350,37 +351,37 @@
 		('Monte Romo', 61),
 		('Puntarenas', 62),
 		('Pitahaya', 62),
-		('Espíritu Santo', 63),
+		('EspÃ­ritu Santo', 63),
 		('San Juan Grande', 63),
 		('Buenos Aires', 64),
-		('Volcán', 64),
+		('VolcÃ¡n', 64),
 		('Miramar', 65),
-		('La Unión', 65),
-		('Ciudad Cortés', 66),
+		('La UniÃ³n', 65),
+		('Ciudad CortÃ©s', 66),
 		('Palmar', 66),
 		('Quepos', 67),
 		('Savegre', 67),
 		('Golfito', 68),
-		('Puerto Jiménez', 68),
+		('Puerto JimÃ©nez', 68),
 		('San Vito', 69),
 		('Sabalito', 69),
 		('Parrita', 70),
-		('Jesús María', 70),
+		('JesÃºs MarÃ­a', 70),
 		('Corredores', 71),
 		('La Cuesta', 71),
-		('Jacó', 72),
-		('Tárcoles', 72),
-		('Limón', 73),
+		('JacÃ³', 72),
+		('TÃ¡rcoles', 72),
+		('LimÃ³n', 73),
 		('Valle La Estrella', 73),
-		('Guápiles', 74),
+		('GuÃ¡piles', 74),
 		('Cariari', 74),
 		('Siquirres', 75),
 		('Pacuarito', 75),
 		('Bribri', 76),
 		('Bratsi', 76),
 		('Matina', 77),
-		('Batán', 77),
-		('Guácimo', 78),
+		('BatÃ¡n', 77),
+		('GuÃ¡cimo', 78),
 		('Mercedes', 78);
 
 	
@@ -485,26 +486,26 @@
 		(175, 'Producto 25-3', 15.99, 25, 8, 'Azul', 345678901); 
 --Llenado de tabla Cliente
 	INSERT INTO Cliente (cedula, nombre, direccion, correo,TipoCedula, id_distrito) VALUES
-		(123456789, 'Cliente 1', 'Dirección 1', 'cliente1@example.com','Fisica',12),
-		(234567890, 'Cliente 2', 'Dirección 2', 'cliente2@example.com','Fisica',2),
-		(345678901, 'Cliente 3', 'Dirección 3', 'cliente3@example.com','Juridica',8),
-		(456789012, 'Cliente 4', 'Dirección 4', 'cliente4@example.com','Fisica',37),
-		(567890123, 'Cliente 5', 'Dirección 5', 'cliente5@example.com','Juridica',13),
-		(678901234, 'Cliente 6', 'Dirección 6', 'cliente6@example.com','Juridica',15),
-		(789012345, 'Cliente 7', 'Dirección 7', 'cliente7@example.com','Fisica',29),
-		(890123456, 'Cliente 8', 'Dirección 8', 'cliente8@example.com','Fisica',34),
-		(901234567, 'Cliente 9', 'Dirección 9', 'cliente9@example.com','Fisica',13),
-		(112233445, 'Cliente 10', 'Dirección 10', 'cliente10@example.com','Juridica',19),
-		(223344556, 'Cliente 11', 'Dirección 11', 'cliente11@example.com','Juridica',65),
-		(334455667, 'Cliente 12', 'Dirección 12', 'cliente12@example.com','Juridica',15),
-		(445566778, 'Cliente 13', 'Dirección 13', 'cliente13@example.com','Fisica',58),
-		(556677889, 'Cliente 14', 'Dirección 14', 'cliente14@example.com','Juridica',50),
-		(667788990, 'Cliente 15', 'Dirección 15', 'cliente15@example.com','Fisica',36),
-		(778899001, 'Cliente 16', 'Dirección 16', 'cliente16@example.com','Juridica',47),
-		(889900112, 'Cliente 17', 'Dirección 17', 'cliente17@example.com','Fisica',53),
-		(990011223, 'Cliente 18', 'Dirección 18', 'cliente18@example.com','Fisica',52),
-		(101122334, 'Cliente 19', 'Dirección 19', 'cliente19@example.com','Fisica',62),
-		(202233445, 'Cliente 20', 'Dirección 20', 'cliente20@example.com','Juridica',70);
+		(123456789, 'Cliente 1', 'DirecciÃ³n 1', 'cliente1@example.com','Fisica',12),
+		(234567890, 'Cliente 2', 'DirecciÃ³n 2', 'cliente2@example.com','Fisica',2),
+		(345678901, 'Cliente 3', 'DirecciÃ³n 3', 'cliente3@example.com','Juridica',8),
+		(456789012, 'Cliente 4', 'DirecciÃ³n 4', 'cliente4@example.com','Fisica',37),
+		(567890123, 'Cliente 5', 'DirecciÃ³n 5', 'cliente5@example.com','Juridica',13),
+		(678901234, 'Cliente 6', 'DirecciÃ³n 6', 'cliente6@example.com','Juridica',15),
+		(789012345, 'Cliente 7', 'DirecciÃ³n 7', 'cliente7@example.com','Fisica',29),
+		(890123456, 'Cliente 8', 'DirecciÃ³n 8', 'cliente8@example.com','Fisica',34),
+		(901234567, 'Cliente 9', 'DirecciÃ³n 9', 'cliente9@example.com','Fisica',13),
+		(112233445, 'Cliente 10', 'DirecciÃ³n 10', 'cliente10@example.com','Juridica',19),
+		(223344556, 'Cliente 11', 'DirecciÃ³n 11', 'cliente11@example.com','Juridica',65),
+		(334455667, 'Cliente 12', 'DirecciÃ³n 12', 'cliente12@example.com','Juridica',15),
+		(445566778, 'Cliente 13', 'DirecciÃ³n 13', 'cliente13@example.com','Fisica',58),
+		(556677889, 'Cliente 14', 'DirecciÃ³n 14', 'cliente14@example.com','Juridica',50),
+		(667788990, 'Cliente 15', 'DirecciÃ³n 15', 'cliente15@example.com','Fisica',36),
+		(778899001, 'Cliente 16', 'DirecciÃ³n 16', 'cliente16@example.com','Juridica',47),
+		(889900112, 'Cliente 17', 'DirecciÃ³n 17', 'cliente17@example.com','Fisica',53),
+		(990011223, 'Cliente 18', 'DirecciÃ³n 18', 'cliente18@example.com','Fisica',52),
+		(101122334, 'Cliente 19', 'DirecciÃ³n 19', 'cliente19@example.com','Fisica',62),
+		(202233445, 'Cliente 20', 'DirecciÃ³n 20', 'cliente20@example.com','Juridica',70);
 
 --Llenado de tabla Factura: los datos de tipo DATE deben ir entre comillas.
 	INSERT INTO Factura (cedula, fecha) VALUES
